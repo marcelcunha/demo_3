@@ -8,6 +8,7 @@ use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
+use App\Http\Livewire\ProfilePassword;
 use App\Http\Livewire\User\Profile;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 Route::get('profile', Profile::class)->name('profile');
+Route::get('profile/password', ProfilePassword::class)->name('profile.password');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
