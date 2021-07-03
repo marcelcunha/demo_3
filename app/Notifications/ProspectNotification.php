@@ -45,7 +45,7 @@ class ProspectNotification extends Notification
         return (new MailMessage)
                     ->line('Você foi cadastrado como um pré usuário em nossa instituição')
                     ->line('Clique no botão para completar o seu cadastro:')
-                    ->action('Completar Cadastro', url('/'));
+                    ->action('Completar Cadastro', route('users.store', $notifiable->token));
     }
 
     /**
