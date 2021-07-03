@@ -8,7 +8,9 @@ use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
-use App\Http\Livewire\ProfilePassword;
+use App\Http\Livewire\Prospect\Create as ProspectCreate;
+use App\Http\Livewire\User\Create as UserCreate;
+use App\Http\Livewire\User\ProfilePassword;
 use App\Http\Livewire\User\Profile;
 use Illuminate\Support\Facades\Route;
 
@@ -23,31 +25,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
-Route::get('profile', Profile::class)->name('profile');
-Route::get('profile/password', ProfilePassword::class)->name('profile.password');
-
-Route::middleware('guest')->group(function () {
-    Route::get('login', Login::class)
-        ->name('login');
-
-    Route::get('register', Register::class)
-        ->name('register');
-});
+Route::get('login', Login::class)->middleware('guest')
+->name('login');
 
 Route::get('password/reset', Email::class)
-    ->name('password.request');
+->name('password.request');
 
 Route::get('password/reset/{token}', Reset::class)
-    ->name('password.reset');
+->name('password.reset');
 
 Route::middleware('auth')->group(function () {
     Route::get('email/verify', Verify::class)
-        ->middleware('throttle:6,1')
-        ->name('verification.notice');
+    ->middleware('throttle:6,1')
+    ->name('verification.notice');
 
     Route::get('password/confirm', Confirm::class)
-        ->name('password.confirm');
+    ->name('password.confirm');
+
+    Route::view('/', 'welcome')->name('home');
+
+    Route::get('profile', Profile::class)->name('profile');
+    Route::get('profile/password', ProfilePassword::class)->name('profile.password');
+    Route::get('users/register/{prospect:token}', UserCreate::class)->name('users.store');
+
+    Route::get('prospects/create', ProspectCreate::class);
+
 });
 
 Route::middleware('auth')->group(function () {
