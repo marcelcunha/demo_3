@@ -15,7 +15,7 @@
         <!-- end sidebar toggle -->
         <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">administração</p>
 
-        <a href="./index.html"
+        <a href="{{route('users.index')}}"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-chart-pie text-xs mr-2"></i>
             Usuários
