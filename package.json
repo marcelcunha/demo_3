@@ -10,9 +10,10 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.3",
         "@tailwindcss/forms": "^0.2",
         "@tailwindcss/typography": "^0.3",
-        "alpinejs": "^2.8",
+        "alpinejs": "^3.2.1",
         "laravel-mix": "^6.0.6",
         "laravel-mix-tailwind": "^0.1",
         "postcss": "^8.1.14",
@@ -22,7 +23,6 @@
         "tailwindcss": "^2.0"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.3",
         "@moesaid/cleopatra": "^1.1.1"
     }
 }

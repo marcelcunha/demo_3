@@ -9,15 +9,15 @@
         <!-- sidebar toggle -->
         <div class="text-right hidden md:block mb-4">
             <button id="sideBarHideBtn">
-                <i class="fad fa-times-circle"></i>
+                <i class="fas fa-times-circle"></i>
             </button>
         </div>
         <!-- end sidebar toggle -->
         <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">administração</p>
 
-        <a href="./index.html"
+        <a href="{{route('users.index')}}"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-chart-pie text-xs mr-2"></i>
+            <i class="fas fa-users text-xs mr-2"></i>
             Usuários
         </a>
 
@@ -25,7 +25,7 @@
 
         <a href="./index.html"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-            <i class="fad fa-chart-pie text-xs mr-2"></i>
+            <i class="fab fa-github text-xs mr-2"></i>
             GitHub
         </a>
     </div>
