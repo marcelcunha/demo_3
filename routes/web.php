@@ -61,5 +61,6 @@ Route::middleware('auth')->group(function () {
     Route::get('profile/password', ProfilePassword::class)
         ->name('profile.password');
 
-    Route::get('prospects/create', ProspectCreate::class);
+    Route::get('prospects/create', ProspectCreate::class)
+        ->name('prospects.create');
 });
