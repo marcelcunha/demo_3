@@ -23,7 +23,7 @@
 
         <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">menu</p>
 
-        <a href="./index.html"
+        <a href="{{route('github.index')}}"
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fab fa-github text-xs mr-2"></i>
             GitHub
