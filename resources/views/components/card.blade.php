@@ -1,13 +1,13 @@
 <div class=" container mx-auto sm:px-6 lg:px-8 ">
     <div class="overflow-hidden  text-gray-600 rounded-lg">
 
-        <div class="px-6 py-4 bg-white border-b border-gray-600 font-bold uppercase ">
+        <div class="px-6 py-4 bg-white border-b border-gray-300 font-bold uppercase ">
             @isset($header)
             {{$header}}
             @endisset
         </div>
 
-        <div class="p-6 bg-white border-b border-gray-600 ">
+        <div class="p-6 bg-white border-b border-gray-300 ">
             {{$slot}}
         </div>
 
