@@ -73,6 +73,6 @@
     </div>
 
     <x-slot name='footer'>
-        {{$users->links()}}
+        {{$users->links('vendor.livewire.tailwind')}}
     </x-slot>
 </x-card>

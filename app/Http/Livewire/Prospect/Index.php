@@ -5,9 +5,12 @@ namespace App\Http\Livewire\Prospect;
 use App\Models\ProspectUser;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+    
     public ?ProspectUser $selected = null;
 
     public function destroy(ProspectUser $prospect)

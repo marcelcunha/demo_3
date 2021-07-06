@@ -8,26 +8,25 @@
         @isset($users)
         <form wire:submit.prevent='fillUsers()'>
 
-            <div class='flex flex-row gap-2 mb-4'>
-                <div class="">
-                    <label for="language" class="font-bold mb-1 text-gray-700 block">Linguagem</label>
+            <div class='flex flex-wrap mb-4 gap-1 items-end'>
+                <div class="w-1/4">
+                    <label for="language" class="form-label block">Linguagem</label>
                     <input type="text"
-                        class=" pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium placeholder-gray-300"
+                        class="form-input"
                         placeholder="php" wire:model.lazy='language' />
                 </div>
-                <div class="">
-                    <label for="locale" class="font-bold mb-1 text-gray-700 block">
+                <div class="w-1/4">
+                    <label for="locale" class="form-label block">
                         Localidade/País
-                        <small class='text-red-600'>* País em inglês</small>
                     </label>
                     <input type="text"
-                        class=" pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium placeholder-gray-300"
+                        class="form-input"
                         placeholder="germany" wire:model.lazy='locale' />
                 </div>
-                <div class="">
-                    <label for="name" class="font-bold mb-1 text-gray-700 block">Nome</label>
+                <div class="w-1/4">
+                    <label for="name" class="form-label block">Nome</label>
                     <input type="text"
-                        class=" pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium placeholder-gray-300"
+                        class="form-input"
                         placeholder="amarildo" wire:model.lazy='name' />
                 </div>
                 <div class='flex flex-row items-end gap-1 w-28'>

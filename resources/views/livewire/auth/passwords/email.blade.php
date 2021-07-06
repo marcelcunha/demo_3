@@ -7,7 +7,7 @@
         </a>
 
         <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
-            Recperar Senha
+            Recuperar Senha
         </h2>
     </div>
 
