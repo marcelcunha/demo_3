@@ -2,7 +2,7 @@
 ## Introdução
 Esse projeto foi desenvolvido com Tall Stack ([Tailwind](https://tailwindcss.com/), [AlpineJs](https://alpinejs.dev/), [Laravel](http://laravel.com) e [Livewire](https://laravel-livewire.com)) e seguindo a filosofia da stack, não foi escrito código Javascript e CSS além do necessário proposto nas respectivas documentações.
 
-Como template de painel administrativo foi usado [Cleopatra](https://moesaid.github.io/cleopatra/), um admin dashboard simples feito com Tailwind. Os recursos de Javascript e CSS do template foram ignorados.
+Como template de painel administrativo foi usado [Cleopatra](https://moesaid.github.io/cleopatra/), um admin dashboard simples feito com Tailwind. Os recursos de Javascript e CSS do template foram ignorados. Para ícones e spinners foi usando [FontAwesome 5](https://fontawesome.com). 
 
 Todas eslizações de cards, tabelas, inputs etc foram baseadas em conteúdos do [Tailwind Components](https://tailwindcomponents.com/) ou algum outro site de conteúdo semelhante.
 
@@ -34,6 +34,8 @@ Para executar o projeto é recomendado que se use Docker. Caso prefira não usar
 6. Execute `sail artisan migrate --seed` para criar as tabelas no banco de dados e alimentá-la com dados fictícios;
 
 7. Caso queira testar o cadastro do novos usuários e recuperação de senha, será necessário adicionar as credenciais de um servidor SMTP no seu `.env`. Para testes é recomendado usar o [MailTrap](https://mailtrap.io/). 
+
+8. Os assets (Javascript e CSS) já estão compilados (para desenvolvimento), caso deseje alterar será necessário instalá-los e executá-los com o comando: `npm i && npm run dev` ou `yarn install && yarn dev`. Certifíque-se de que tenha [NodeJs](https://nodejs.org/en/) instalado antes de usar os comandos anteriores.
     
 ### Usuário de testes
 **E-Mail:** admin@example.com
