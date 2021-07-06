@@ -23,15 +23,16 @@ Para executar o projeto é recomendado que se use Docker. Caso prefira não usar
     laravelsail/php80-composer:latest \
     composer install --ignore-platform-reqs
     ```
-3. Execute ```sail up -d``` para baixar as dependências e subir os conteiners e desbloquear o terminal;
+3. Execute ```./vendor/bin/sail up -d``` para baixar as dependências e subir os conteiners e desbloquear o terminal;
 
 4. Clone o arquivo ```.env.example``` para ```.env```.
 
-     Certifique-se de que haja uma chave `GITHUB_API_URL` com seu devido valor no `.env`
+    Certifique-se de que haja uma chave `GITHUB_API_URL` com seu devido valor no `.env`
+    Configure as credenciais do seu banco de dados nas chaves correspondentes
 
-5. Execute `sail artisan key:generate` para gerar a APP_KEY no seu `.env`
+5. Execute `./vendor/bin/sail artisan key:generate` para gerar a APP_KEY no seu `.env`
 
-6. Execute `sail artisan migrate --seed` para criar as tabelas no banco de dados e alimentá-la com dados fictícios;
+6. Execute `./vendor/bin/sail artisan migrate --seed` para criar as tabelas no banco de dados e alimentá-la com dados fictícios;
 
 7. Caso queira testar o cadastro do novos usuários e recuperação de senha, será necessário adicionar as credenciais de um servidor SMTP no seu `.env`. Para testes é recomendado usar o [MailTrap](https://mailtrap.io/). 
 
