@@ -3,9 +3,12 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\ProspectUser;
+use App\Providers\Registered;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class Create extends Component
@@ -40,18 +43,24 @@ class Create extends Component
 
     public function store(UserService $service)
     {
+        Auth::logout();
 
         $this->validate();
 
-        $service->store([
+        $user = $service->store([
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password
         ]);
+
+        event(new Registered($user, $this->prospect));
+
+        Session::flash('success', 'Seu cadastro foi efetuado, faça login na aplicação');
+        redirect()->route('login');
     }
 
     public function render()
     {
-        return view('livewire.user.create');
+        return view('livewire.user.create')->extends('layouts.auth');;
     }
 }
