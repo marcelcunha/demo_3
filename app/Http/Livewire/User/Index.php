@@ -4,6 +4,7 @@ namespace App\Http\Livewire\User;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -16,11 +17,17 @@ class Index extends Component
 
     public function destroy(User $user)
     {
-        $user->delete();
+        if($user == Auth::user()){
+            Session::flash('disaster', 'Não é possível remover o usuário que está logado!');
 
-        $this->selected = null;
 
-        Session::flash('success', 'Usuário removido com sucesso!');
+        }else{
+            $user->delete();
+
+            $this->selected = null;
+
+            Session::flash('success', 'Usuário removido com sucesso!');
+        }
         return redirect()->route('users.index');
     }
 

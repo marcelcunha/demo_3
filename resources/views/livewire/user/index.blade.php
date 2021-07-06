@@ -4,6 +4,12 @@
 </x-alert>
 @endif
 
+@if (session()->has('disaster'))
+<x-alert type='disaster'>
+    {{session()->get('disaster')}}
+</x-alert>
+@endif
+
 <x-card>
 
     <x-slot name='header'>

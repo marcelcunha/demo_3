@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(50)->create();
+        $this->call(UserSeeder::class);
+
+        if(env('APP_ENV')!='production'){
+            User::factory(50)->create();
+        }
     }
 }
