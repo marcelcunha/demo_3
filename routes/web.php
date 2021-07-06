@@ -54,7 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('password/confirm', Confirm::class)
         ->name('password.confirm');
 
-    Route::view('/', 'welcome')->name('home');
+    Route::view('/', 'layouts.app')->name('home');
 
     Route::get('users', UserIndex::class)
         ->name('users.index');
