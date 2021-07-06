@@ -6,8 +6,8 @@ use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
-use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
+use App\Http\Livewire\Prospect\Index as ProspectIndex;
 use App\Http\Livewire\Prospect\Create as ProspectCreate;
 use App\Http\Livewire\Github\Index as GithubIndex;
 use App\Http\Livewire\Github\Show as GithubShow;
@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::get('profile/password', ProfilePassword::class)
         ->name('profile.password');
 
+    Route::get('prospects/index', ProspectIndex::class)
+        ->name('prospects.index');
     Route::get('prospects/create', ProspectCreate::class)
         ->name('prospects.create');
 

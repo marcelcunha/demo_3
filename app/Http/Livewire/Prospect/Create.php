@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Prospect;
 
 use App\Events\ProspectEvent;
 use App\Services\ProspectService;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class Create extends Component
@@ -28,6 +29,9 @@ class Create extends Component
             'email' => $this->email
         ]);
         event(new ProspectEvent($prospect));
+
+        Session::flash('success', 'Pré-Usuário adicionado com sucesso!');
+        return redirect()->route('prospects.index');
     }
 
     public function render()

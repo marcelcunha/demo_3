@@ -20,6 +20,11 @@
             <i class="fas fa-users text-xs mr-2"></i>
             Usuários
         </a>
+        <a href="{{route('prospects.index')}}"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fas fa-user-plus text-xs mr-2"></i>
+            Pré-Usuários
+        </a>
 
         <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">menu</p>
 
