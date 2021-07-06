@@ -13,22 +13,22 @@
         </div>
     </x-slot>
 
-    <div class="table w-full p-2" x-data="{modal: false, name: undefined}">
-        <table class="w-full border">
+    <div class="w-full p-2" x-data="{modal: false, name: undefined}">
+        <table class="w-full table-fixed border">
             <thead>
-                <tr class="bg-gray-50 border-b">
+                <tr class="  bg-gray-50 border-b">
 
-                    <th class="p-2 border-r cursor-pointer text-lg font-bold text-gray-500">
+                    <th class="w-3/6 p-2 border-r text-lg font-bold text-gray-500">
                         <div class="flex items-center justify-center">
                             Nome
                         </div>
                     </th>
-                    <th class="p-2 border-r cursor-pointer text-lg font-bold text-gray-500">
+                    <th class="w-3/6 border-r text-lg font-bold text-gray-500">
                         <div class="flex items-center justify-center">
                             E-Mail
                         </div>
                     </th>
-                    <th class="p-2 border-r cursor-pointer text-lg font-bold text-gray-500">
+                    <th class="w-1/6 p-2 border-r text-lg font-bold text-gray-500">
                         <div class="flex items-center justify-center">
                             Ações
                         </div>
@@ -38,7 +38,7 @@
             <tbody>
                 @foreach ($users as $user)
 
-                <tr class="bg-gray-100 border-b text-sm text-gray-600 ">
+                <tr class=" border-b text-sm text-gray-600 ">
                     <td class="p-2 border-r">{{$user->name}}</td>
                     <td class="p-2 border-r">{{$user->email}}</td>
                     <td class="text-center">

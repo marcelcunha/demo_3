@@ -10,12 +10,14 @@ class Index extends Component
     public int $page;
     public int $totalPages;
     public ?array $users = null;
+    public string $language = '';
+    public string $locale = '';
+    public string $name = '';
 
     public function mount(GithubService $service)
     {
         $this->page = 1;
         $this->totalPages = $service->getTotalPages();
-        $this->fillUsers();
     }
 
     public function nextPage()
@@ -40,7 +42,20 @@ class Index extends Component
 
     public function fillUsers()
     {
-        $this->users = (new GithubService)->fetchUsersList($this->page);
+
+        $this->users = (new GithubService)->fetchUsersList(
+            $this->page,
+            $this->locale,
+            $this->language,
+            $this->name
+        );
+    }
+
+
+    public function clear()
+    {
+        $this->language = $this->locale = $this->name = '';
+        $this->fillUsers();
     }
 
     public function render()

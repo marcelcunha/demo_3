@@ -1,10 +1,5 @@
 import Alpine from  'alpinejs';
 
-// import './base/navbar'
-// import './base/sidebar'
-// import './base/dropdown'
-
-import './base/alert'
 import '@fortawesome/fontawesome-free'
 
 window.Alpine = Alpine
