@@ -9,6 +9,8 @@ use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\Prospect\Create as ProspectCreate;
+use App\Http\Livewire\Github\Index as GithubIndex;
+use App\Http\Livewire\Github\Show as GithubShow;
 use App\Http\Livewire\User\Index as UserIndex;
 use App\Http\Livewire\User\Create as UserCreate;
 use App\Http\Livewire\User\ProfilePassword;
@@ -63,4 +65,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('prospects/create', ProspectCreate::class)
         ->name('prospects.create');
+
+    Route::get('github-users', GithubIndex::class)
+        ->name('github.index');
+    Route::get('github-users/{login}', GithubShow::class)
+        ->name('github.show');
 });

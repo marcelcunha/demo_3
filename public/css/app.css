@@ -33958,7 +33958,10 @@ select{
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
+  text-transform: none;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
@@ -33979,7 +33982,10 @@ select{
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
+  text-transform: none;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
@@ -34000,7 +34006,10 @@ select{
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
+  text-transform: none;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
@@ -34021,7 +34030,10 @@ select{
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 700;
+  text-transform: none;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
