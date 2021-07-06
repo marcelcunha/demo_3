@@ -6,8 +6,15 @@ use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
-use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
+use App\Http\Livewire\Prospect\Index as ProspectIndex;
+use App\Http\Livewire\Prospect\Create as ProspectCreate;
+use App\Http\Livewire\Github\Index as GithubIndex;
+use App\Http\Livewire\Github\Show as GithubShow;
+use App\Http\Livewire\User\Index as UserIndex;
+use App\Http\Livewire\User\Create as UserCreate;
+use App\Http\Livewire\User\ProfilePassword;
+use App\Http\Livewire\User\Profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,15 +28,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
-
-Route::middleware('guest')->group(function () {
-    Route::get('login', Login::class)
-        ->name('login');
-
-    Route::get('register', Register::class)
-        ->name('register');
-});
+Route::get('login', Login::class)->middleware('guest')
+    ->name('login');
 
 Route::get('password/reset', Email::class)
     ->name('password.request');
@@ -37,14 +37,8 @@ Route::get('password/reset', Email::class)
 Route::get('password/reset/{token}', Reset::class)
     ->name('password.reset');
 
-Route::middleware('auth')->group(function () {
-    Route::get('email/verify', Verify::class)
-        ->middleware('throttle:6,1')
-        ->name('verification.notice');
-
-    Route::get('password/confirm', Confirm::class)
-        ->name('password.confirm');
-});
+Route::get('users/register/{prospect:token}', UserCreate::class)
+    ->name('users.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
@@ -53,4 +47,29 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+    Route::get('email/verify', Verify::class)
+        ->middleware('throttle:6,1')
+        ->name('verification.notice');
+
+    Route::get('password/confirm', Confirm::class)
+        ->name('password.confirm');
+
+    Route::view('/', 'layouts.app')->name('home');
+
+    Route::get('users', UserIndex::class)
+        ->name('users.index');
+    Route::get('profile', Profile::class)
+        ->name('profile');
+    Route::get('profile/password', ProfilePassword::class)
+        ->name('profile.password');
+
+    Route::get('prospects/index', ProspectIndex::class)
+        ->name('prospects.index');
+    Route::get('prospects/create', ProspectCreate::class)
+        ->name('prospects.create');
+
+    Route::get('github-users', GithubIndex::class)
+        ->name('github.index');
+    Route::get('github-users/{login}', GithubShow::class)
+        ->name('github.show');
 });

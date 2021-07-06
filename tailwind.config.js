@@ -2,6 +2,9 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
     theme: {
+        fontFamily: {
+            'sans': ['Ubuntu', 'Sans-serif']
+        },
         extend: {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
@@ -11,6 +14,7 @@ module.exports = {
     variants: {
         extend: {
             backgroundColor: ['active'],
+            opacity: ['disabled']
         }
     },
     purge: {
