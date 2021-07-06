@@ -6,7 +6,7 @@ Como template de painel administrativo foi usado [Cleopatra](https://moesaid.git
 
 Todas eslizações de cards, tabelas, inputs etc foram baseadas em conteúdos do [Tailwind Components](https://tailwindcomponents.com/) ou algum outro site de conteúdo semelhante.
 
----
+Para sessão Github da aplicação, foi usada a [api de buscas de usuário](https://docs.github.com/en/rest/reference/search#search-users) da plataforma. Todas requisições são feitas visando usuários com mais de 500 seguidores. 
 ## Instalação
 
 Para executar o projeto é recomendado que se use Docker. Caso prefira não usar, crie um banco de dados, siga as instruções a partir do passo 4 configurando as credenciais do banco no arquivo ```.env```.
@@ -27,7 +27,7 @@ Para executar o projeto é recomendado que se use Docker. Caso prefira não usar
 
 4. Clone o arquivo ```.env.example``` para ```.env```.
 
-...Certifique-se de que haja uma chave `GITHUB_API_URL` com seu devido valor no `.env`
+     Certifique-se de que haja uma chave `GITHUB_API_URL` com seu devido valor no `.env`
 
 5. Execute `sail artisan key:generate` para gerar a APP_KEY no seu `.env`
 
