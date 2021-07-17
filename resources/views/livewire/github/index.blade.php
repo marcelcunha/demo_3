@@ -2,32 +2,26 @@
     <x-slot name="header">
         Usuários com mais seguidores do GITHUB
     </x-slot>
-    <x-loader wire:loading wire:target='fillUsers,previewPage,nextPage, clear'></x-loader>
+    <x-loader wire:loading></x-loader>
 
-    <div wire:init='fillUsers' wire:loading.remove class="w-full p-2">
+    <div wire:init='fillUsers()' wire:loading.remove class="w-full p-2">
         @isset($users)
-        <form wire:submit.prevent='fillUsers()'>
+        <form wire:submit.prevent='fillUsers(true)'>
 
             <div class='flex flex-wrap mb-4 gap-1 items-end'>
                 <div class="w-1/4">
                     <label for="language" class="form-label block">Linguagem</label>
-                    <input type="text"
-                        class="form-input"
-                        placeholder="php" wire:model.lazy='language' />
+                    <input type="text" class="form-input" placeholder="php" wire:model.lazy='language' />
                 </div>
                 <div class="w-1/4">
                     <label for="locale" class="form-label block">
                         Localidade/País
                     </label>
-                    <input type="text"
-                        class="form-input"
-                        placeholder="germany" wire:model.lazy='locale' />
+                    <input type="text" class="form-input" placeholder="germany" wire:model.lazy='locale' />
                 </div>
                 <div class="w-1/4">
                     <label for="name" class="form-label block">Nome</label>
-                    <input type="text"
-                        class="form-input"
-                        placeholder="amarildo" wire:model.lazy='name' />
+                    <input type="text" class="form-input" placeholder="amarildo" wire:model.lazy='name' />
                 </div>
                 <div class='flex flex-row items-end gap-1 w-28'>
                     <button class='btn-secondary' title='Buscar' type='submit'>
@@ -89,11 +83,14 @@
             </tbody>
         </table>
 
-        <button wire:click='previewPage()'>
-            << Anterior </button> <button wire:click='nextPage()'>
-                Próximo >>
-        </button>
+        @if ($users->hasPages())
+        <x-slot name=footer>
+            {{$users->links('vendor.livewire.tailwind')}}
+        </x-slot>
+        @endif
+
         @endif
     </div>
+
 
 </x-card>

@@ -19,8 +19,6 @@ class Index extends Component
     {
         if($user == Auth::user()){
             Session::flash('disaster', 'Não é possível remover o usuário que está logado!');
-
-
         }else{
             $user->delete();
 

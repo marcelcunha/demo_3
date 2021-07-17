@@ -2,28 +2,32 @@
 
 namespace App\Services;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Http;
 
 class GithubService
 {
-    private string $baseURL;
-    private int $perPage = 10;
-    private int $totalPages = 50;
-    private string $query = "/search/users?q=followers:>500";
+    protected string $baseURL;
+    protected string $query = "/search/users?q=followers:>500";
+    protected int $perPage = 10;
 
     public function __construct()
     {
         $this->baseURL = env('GITHUB_API_URL');
     }
 
-    public function fetchUsersList(int $page = 1, string $locale = '', string $language = '', string $name = ''): array
+    public function fetchUsersList(int $page = 1, string $locale = '', string $language = '', string $name = '') : LengthAwarePaginator
     {
         $query = $this->getQuery($page, $locale, $language, $name);
 
         $response = Http::get($this->baseURL . $query)->json();
-        $this->setTotalPages($response['total_count']);
 
-        return $response['items'];
+        return (new PaginatorService(
+                $response['total_count'],
+                $this->perPage,
+                500
+            ))
+            ->paginate($response['items']);
     }
 
     public function fetchUser(string $login)
@@ -31,21 +35,7 @@ class GithubService
         return Http::get($this->baseURL . "/users/$login")->json();
     }
 
-    public function getTotalPages()
-    {
-        return $this->totalPages;
-    }
-
-    public function setTotalPages(int $itemsCount)
-    {
-        $total = $this->perPage * $this->totalPages;
-
-        if ($itemsCount < $total) {
-            $this->totalPages = ceil($itemsCount / $this->perPage);
-        }
-    }
-
-    private function getQuery(int $page, string $locale, string $language, string $name)
+    protected function getQuery(int $page, string $locale, string $language, string $name)
     {
         $query = $this->query;
 
@@ -58,8 +48,8 @@ class GithubService
         if ($name != '') {
             $query .= "+in:name+$name";
         }
-    
-        return $query .=
+
+        return $query  .=
             "&per_page={$this->perPage}" .
             "&page={$page}";
     }

@@ -3,47 +3,33 @@
 namespace App\Http\Livewire\Github;
 
 use App\Services\GithubService;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Request;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
-    public int $page;
-    public int $totalPages;
-    public ?array $users = null;
+    use WithPagination;
+
     public string $language = '';
     public string $locale = '';
     public string $name = '';
 
-    public function mount(GithubService $service)
+    /**
+     *  Atualiza a lista de usuários,
+     * baseado ou não nos parâmetros de consulta
+     *
+     * @param boolean $search especifica se é uma consulta
+     * @return LengthAwarePaginator
+     */
+    public function fillUsers(bool $search = false): LengthAwarePaginator
     {
-        $this->page = 1;
-        $this->totalPages = $service->getTotalPages();
-    }
-
-    public function nextPage()
-    {
-        $this->users = null;
-
-        if ($this->page <= $this->totalPages) {
-            $this->page++;
-            $this->fillUsers();
+        if ($search) {
+            $this->resetPage();
         }
-    }
 
-    public function previewPage()
-    {
-        $this->users = null;
-
-        if ($this->page > 1) {
-            $this->page--;
-            $this->fillUsers();
-        }
-    }
-
-    public function fillUsers()
-    {
-
-        $this->users = (new GithubService)->fetchUsersList(
+        return (new GithubService)->fetchUsersList(
             $this->page,
             $this->locale,
             $this->language,
@@ -51,15 +37,19 @@ class Index extends Component
         );
     }
 
-
+    /**
+     * Limpa os parâmetro da consulta
+     *
+     * @return void
+     */
     public function clear()
     {
+        $this->resetPage();
         $this->language = $this->locale = $this->name = '';
-        $this->fillUsers();
     }
 
-    public function render()
+    public function render(Request $request)
     {
-        return view('livewire.github.index');
+        return view('livewire.github.index', ['users' => $this->fillUsers()]);
     }
 }
